@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const AddTodoForm = ({onAddTodo}) => {
-    const [todoTitle, setTodoTitle] = useState()
+    const [todoTitle, setTodoTitle] = useState('')
     const handleTitleChange = (event) => {
         let newTodoTitle = event.target.value;
         setTodoTitle(newTodoTitle)
@@ -21,7 +21,7 @@ const AddTodoForm = ({onAddTodo}) => {
 
     //    we are invoking the newTodo as the todoTitle so we can see the state
     // we use totoTitle instead of saying newTodo because newTodo is not defined here and we are taking the todoTitle from the input
-
+console.log(todoTitle)
 return (
     <form onSubmit={handleAddTodo}>
         <label htmlFor="todoTitle">Title</label> {/*htmlFor- react syntax for for attr*/}
@@ -29,6 +29,7 @@ return (
         {/* making the value be the initial state */}
         <button type="submit" >Add</button>
     </form>
+    
 )
 }
 

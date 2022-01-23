@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import TodoList from "./TodoList"; //remember the ./ because it's in a different file
 import AddTodoForm from "./AddTodoForm";
 
+const { REACT_APP_AIRTABLE_API_KEY, REACT_APP_AIRTABLE_BASE_ID } = process.env;
+// variables from .env.local from airtable
+console.log(process.env);
+
 function App() {
   const [todoList, setTodoList] = useState([]);
   // made initial state empty array to start with an empty list and simulating fetching todos asynchronously
@@ -10,21 +14,24 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    new Promise((resolve, reject) => {
-      setTimeout(
-        () =>
-          resolve({
-            data: {
-              todoList: JSON.parse(localStorage.getItem("savedTodoList")),
-            },
-          }),
-        2000
-      );
-    }).then((result) => {
-      setTodoList(result.data.todoList);
-      setIsLoading(false);
-    });
-    // parsing to make string an object
+  
+    fetch(`https://api.airtable.com/v0/${REACT_APP_AIRTABLE_BASE_ID}/Default`, {
+      headers: {
+        Authorization: `Bearer ${REACT_APP_AIRTABLE_API_KEY}`,
+        // header is a fetch option we are authenticating using API key
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        setTodoList(result.records);
+        // updates array to be state instead of the object
+        setIsLoading(false);
+        })
+      .catch((error) => {
+        setIsLoading(false);
+        console.log(error);
+      });
   }, []);
   // mimicing asynchronous testing of an API
   // returning the promise with the then method
@@ -34,7 +41,8 @@ function App() {
     if (isLoading === false) {
       localStorage.setItem("savedTodoList", JSON.stringify(todoList));
     }
-  }, [todoList]);
+  }, [todoList, isLoading]);
+  //isLoading is an array dependency
   // made todoList a string
   // savedTodoList is key and todoList is value
   // each time todoList is change we are saving to savedTodoList in localStorage
@@ -51,6 +59,7 @@ function App() {
   // made a new event handler removeTodo to remove initial state
   // made a new variable for new array newTodoList that removes array
   // calling the new state function and passing the new array
+  //  we re removing todolist array with the id
 
   return (
     <>

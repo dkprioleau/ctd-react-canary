@@ -13,9 +13,12 @@ const AddTodoForm = ({ onAddTodo }) => {
     event.preventDefault();
     // preventing default behavior of form submit
     console.log(todoTitle);
+    const d = new Date()
     onAddTodo({
-      id: Date.now(),
-      title: todoTitle,
+      id: d.toISOString(),
+      // creating new date id for each
+     fields:{ Title: todoTitle,}
+    //  updated to match the airtable object syntax
     });
     setTodoTitle("");
     // this is so the input is a blank string after typing

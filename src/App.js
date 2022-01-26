@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TodoList from "./TodoList"; //remember the ./ because it's in a different file
 import AddTodoForm from "./AddTodoForm";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const { REACT_APP_AIRTABLE_API_KEY, REACT_APP_AIRTABLE_BASE_ID } = process.env;
 // variables from .env.local from airtable
@@ -14,7 +15,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-  
     fetch(`https://api.airtable.com/v0/${REACT_APP_AIRTABLE_BASE_ID}/Default`, {
       headers: {
         Authorization: `Bearer ${REACT_APP_AIRTABLE_API_KEY}`,
@@ -27,7 +27,7 @@ function App() {
         setTodoList(result.records);
         // updates array to be state instead of the object
         setIsLoading(false);
-        })
+      })
       .catch((error) => {
         setIsLoading(false);
         console.log(error);
@@ -62,17 +62,27 @@ function App() {
   //  we re removing todolist array with the id
 
   return (
-    <>
-      <h1>To Do List</h1>
-      <AddTodoForm onAddTodo={addTodo} />
-      {/* onAddTodo is the props. We are changing the state of the state in the AddTodoForm and are rending it in App component */}
-      {isLoading === true ? (
-        <p>Loading</p>
-      ) : (
-        <TodoList onRemoveTodo={removeTodo} todoList={todoList} />
-      )}
-      {/* condition that when isloading is true loading p will appear when false TodoList component  */}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" exact element={
+            <>
+              <h1>To Do List</h1>
+              <AddTodoForm onAddTodo={addTodo} />
+              {/* onAddTodo is the props. We are changing the state of the state in the AddTodoForm and are rending it in App component */}
+              {isLoading === true ? (
+                <p>Loading</p>
+              ) : (
+                <TodoList onRemoveTodo={removeTodo} todoList={todoList} />
+              )}
+              {/* condition that when isloading is true loading p will appear when false TodoList component  */}
+            </> 
+          }
+        >
+        </Route>
+        <Route path="/new" element={<h1>New Todo List</h1>}></Route>
+        {/* new path (page) */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 

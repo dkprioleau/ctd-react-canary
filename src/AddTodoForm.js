@@ -9,7 +9,6 @@ const AddTodoForm = ({ onAddTodo }) => {
     setTodoTitle(newTodoTitle);
   };
   const handleAddTodo = (event) => {
-    // created handler function
     event.preventDefault();
     // preventing default behavior of form submit
     console.log(todoTitle);

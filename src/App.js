@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import TodoList from "./TodoList"; //remember the ./ because it's in a different file
 import AddTodoForm from "./AddTodoForm";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom"; 
+import style from './TodoListItem.module.css';
+
 
 const { REACT_APP_AIRTABLE_API_KEY, REACT_APP_AIRTABLE_BASE_ID } = process.env;
 // variables from .env.local from airtable
@@ -65,7 +67,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" exact element={
-            <>
+            <div className={style.container}>
               <h1>To Do List</h1>
               <AddTodoForm onAddTodo={addTodo} />
               {/* onAddTodo is the props. We are changing the state of the state in the AddTodoForm and are rending it in App component */}
@@ -75,7 +77,7 @@ function App() {
                 <TodoList onRemoveTodo={removeTodo} todoList={todoList} />
               )}
               {/* condition that when isloading is true loading p will appear when false TodoList component  */}
-            </> 
+            </div> 
           }
         >
         </Route>

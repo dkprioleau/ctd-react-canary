@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap");
+
+html {
+  background-color: #b6fbff;
+  font-family: " Inconsolata", sans-serif;
+}
+h1{ 
+    text-align:center;
+}
+
+h1,
+label {
+  color: #585852;
+}
+
+label {
+  font-size: 20px;
+}
+
+input {
+  border-radius: 5px;
+  padding: 5px 80px;
+}
+
+button {
+  border-radius: 7px;
+  margin: 10px;
+  padding: 5px;
+  font-weight: bold;
+  background-color: white;
+  border: solid 1px #585852;
+  box-shadow: 3px 8px;
+}
+
+button:hover {
+  color: #256b9e;
+  background-color: white;
+  box-shadow: 3px 8px #256b9e;
+}
+
+.container {
+  margin: auto;
+  width: 50%;
+}
+
+.ListItem {
+  color: #256b9e;
+  padding: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  
+}
+
+
+@media(max-width:820px){
+    .container{ 
+        margin:0 auto;
+    } 
+
+    form{ 
+        display:flex;
+        align-items:center;
+    }
+}
+
+
+@media (max-width: 400px) {
+  
+  .container{
+      width:100%;
+  }
+  
+    input {
+    padding: 2px;
+  }
+
+ 
+  .ListItem {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+
+  .ListItem button{ 
+      padding:10px;
+  }
+}

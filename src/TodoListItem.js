@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import style from './TodoListItem.module.css';
 
 const TodoListItem = ({ todo, onRemoveTodo }) => {
   console.log(todo);
 
-  const [completed,setCompleted] = useState();
+  // const [completed,setCompleted] = useState();
   // const handleCompleted= (e)=>{
   //   setCompleted(e.target.id)
 

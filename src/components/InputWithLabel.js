@@ -1,10 +1,14 @@
 import React, { useRef, useEffect } from "react";
+import PropTypes from 'prop-types';
+
 
 export default function InputWithLabel({
   todoTitle,
   handleTitleChange,
   children,
 }) {
+  
+
   const inputRef = useRef();
   useEffect(() => {
     inputRef.current.focus();
@@ -28,3 +32,10 @@ export default function InputWithLabel({
     </>
   );
 }
+
+InputWithLabel.propTypes={
+    todoTitle:PropTypes.string,
+    handleTitleChange:PropTypes.func,
+    children:PropTypes.element
+    // children is a react element
+  }

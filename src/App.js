@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import TodoList from "./TodoList"; //remember the ./ because it's in a different file
-import AddTodoForm from "./AddTodoForm";
+import TodoList from "./components/TodoList"; //remember the ./ because it's in a different file
+import AddTodoForm from "./components/AddTodoForm";
 import { BrowserRouter, Routes, Route } from "react-router-dom"; 
-import style from './TodoListItem.module.css';
+import style from './components/TodoListItem.module.css';
 
 
 const { REACT_APP_AIRTABLE_API_KEY, REACT_APP_AIRTABLE_BASE_ID } = process.env;

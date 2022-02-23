@@ -1,8 +1,10 @@
 import React from "react";
 import TodoListItem from "./TodoListItem";
-// remember to always do the ./ for the path
+import PropTypes from 'prop-types';
 
 const TodoList = ({ todoList, onRemoveTodo }) => {
+  
+
   console.log(todoList)
   return (
     
@@ -19,4 +21,8 @@ const TodoList = ({ todoList, onRemoveTodo }) => {
   );
 };
 
+TodoList.propTypes={
+    todoList:PropTypes.array,
+    onRemoveTodo:PropTypes.func
+  }
 export default TodoList;

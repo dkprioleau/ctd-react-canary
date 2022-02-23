@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import InputWithLabel from "./InputWithLabel";
 import PropTypes from 'prop-types';
+import style from "./TodoListItem.module.css";
 
 const AddTodoForm = ({ onAddTodo }) => {
   AddTodoForm.propTypes ={
@@ -40,7 +41,7 @@ const AddTodoForm = ({ onAddTodo }) => {
         <strong>Title</strong>
       </InputWithLabel>
 
-      <button type="submit">Add</button>
+      <button className={style.plus} type="submit">Add</button>
     </form>
   );
 };

@@ -11,13 +11,16 @@ console.log(process.env);
 
 function App() {
   const [todoList, setTodoList] = useState([]);
-  // made initial state empty array to start with an empty list and simulating fetching todos asynchronously
   // the todoList is the savedTodoList
 
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://api.airtable.com/v0/${REACT_APP_AIRTABLE_BASE_ID}/Default`, {
+    fetch(`https://api.airtable.com/v0/${REACT_APP_AIRTABLE_BASE_ID}/Default?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=asc`, {
+      /* after the url is a query parameter that makes sure the list is in the right order as API
+      they start with ? and have a & between each pair
+      asc is short for ascending (a to z)*/
+
       headers: {
         Authorization: `Bearer ${REACT_APP_AIRTABLE_API_KEY}`,
         // header is a fetch option we are authenticating using API key
@@ -35,7 +38,6 @@ function App() {
         console.log(error);
       });
   }, []);
-  // mimicing asynchronous testing of an API
   // returning the promise with the then method
   // using state setter to update list and pass initial state from result object
 

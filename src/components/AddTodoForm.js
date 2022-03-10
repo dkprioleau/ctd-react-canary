@@ -14,15 +14,14 @@ const AddTodoForm = ({ onAddTodo }) => {
     let newTodoTitle = event.target.value;
     setTodoTitle(newTodoTitle);
   };
+  
   const handleAddTodo = (event) => {
     event.preventDefault();
     // preventing default behavior of form submit
     console.log(todoTitle);
-    const d = new Date()
+  
     onAddTodo({
-      id: d.toISOString(),
-      // creating new date id for each
-     fields:{ Title: todoTitle,}
+     fields:{ Title: todoTitle}
     //  updated to match the airtable object syntax
     });
     setTodoTitle("");

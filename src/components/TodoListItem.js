@@ -16,7 +16,7 @@ const TodoListItem = ({ todo, onRemoveTodo }) => {
       {/* This is grabbing the title from the API array */}
       {/* <button type="button" onClick={handleCompleted}>Completed</button> */}
       <button type="button" onClick={() => onRemoveTodo(todo.id)}>
-        x 
+        Remove 
         {/* remove */}
       </button>
     </li>

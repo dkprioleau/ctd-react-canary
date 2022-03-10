@@ -5,8 +5,8 @@
   --light-orange:#F2DAB4;
   --shadow:#D7A75A;
   --grey:#585852;
-  --gold:#D49024;
-  --green:#0000;
+  --brown:#493112;
+  
 }
 
 html {
@@ -14,21 +14,49 @@ html {
   font-family: "Zen Kaku Gothic Antique", sans-serif;
 }
 
+.header{
+  margin-bottom:2em;
+  display:flex;
+  align-items:center; 
+  justify-content:flex-start;
+  
+}
+
+.header img{
+  width:60px;
+  height:60px;
+  /* border:5px solid white; */
+  padding-right:15px;
+}
+
+.header a:last-child{ 
+  font-size:12px;
+  text-decoration:none;
+  color:var(--brown); 
+  /* border:1px solid var(--deep-orange); */
+  background-color:var(--deep-orange);
+  border-radius:5px;
+  width:65px;
+  text-align:center;
+
+}
 
 h1,
 label {
-  color: var(--gold);
+  color: var(--brown);
+  
 }
 
-label {
+label{
   font-size: 20px;
 }
+
 
 input {
   border:1px solid var(--grey);
   border-radius: 5px;
   padding: 5px;
-  width:250px;
+  max-width:250px;
 }
 
 .container {
@@ -45,8 +73,8 @@ input {
 }
 
 .ListItem {
-  width: 30em;
-  color: white;
+ width: 30em;
+  color: var(--brown);
   text-align:center;
   padding: 10px;
   font-size: 20px;
@@ -65,7 +93,7 @@ ul{
 }
 
 .plus{ 
-  background-color:var(--gold);
+  background-color:var(--brown);
   padding:5px;
   width:50px;
   color:white;
@@ -76,50 +104,47 @@ button {
   border:none;
   margin: 10px;
   padding: 5px;
-  color:var(--gold);
+  color:var(--brown);
   font-weight: bold;
   background-color: white;
-  box-shadow:1px 7px 8px var(--gold);
+  box-shadow:1px 7px 8px var(--brown);
 }
 
 button:hover {
   color: white;
-  background-color: var(--gold);
-  box-shadow: 2px 5px 10px var(--gold);
+  background-color: var(--brown);
+  box-shadow: 2px 5px 10px var(--brown);
+}
+
+/* ---------Helpful Tips------ */
+.TipsContainer{
+  margin:0 auto;
+  width: 30em;
+  padding:10px;
+  background-color: var(--deep-orange);
+  border-radius:7px;
+  box-shadow:1px 7px 8px var(--shadow); 
+  padding:20px;
+}
+
+.TipsContainer h1{
+  text-align:center;
+  
 }
 
 
+/*-----------media queries---------*/
 
+@media only screen and (max-width: 500px) {
+  html {
+    font-size: .5rem;
+  }
 
-@media(max-width:820px){
-    .container{ 
-        margin:0 auto;
-    } 
+  form{ 
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
 
-    form{ 
-        display:flex;
-        align-items:center;
-    }
-}
-
-
-@media (max-width: 400px) {
   
-  .container{
-      width:100%;
-  }
-  
-    input {
-    padding: 2px;
-  }
-
- 
-  .ListItem {
-    margin-top: 10px;
-    font-size: 20px;
-  }
-
-  .ListItem button{ 
-      padding:10px;
-  }
 }
